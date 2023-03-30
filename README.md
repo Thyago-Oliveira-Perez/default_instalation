@@ -7,4 +7,8 @@ Para isso use o comando:
 ```bash
 $ chmod +x install.sh
 ```
-e, em seguida, executeo como superusuário usando o comando sudo ./install.sh.
+e, em seguida, executeo como superusuário usando o comando:
+
+```bash
+$ sudo ./install.sh
+```
