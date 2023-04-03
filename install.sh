@@ -14,7 +14,7 @@ function verify_super_user {
   fi
 }
 
-function install_packages {
+function install_packages_linux {
 
   verify_super_user
 
@@ -26,24 +26,24 @@ function install_packages {
   done
 }
 
-# function install_nvs {
-#   export NVS_HOME="$HOME/.nvs"
-#   git clone https://github.com/jasongin/nvs "$NVS_HOME"
-#   . "$NVS_HOME/nvs.sh" install
-# }
+function install_nvs {
+  export NVS_HOME="$HOME/.nvs"
+  git clone https://github.com/jasongin/nvs "$NVS_HOME"
+  . $NVS_HOME/nvs.sh install
+}
 
 # Verify the os and then run the correct function
 function run_instalation {
   if [ $so == "windows" ]; then
     echo "Your choice: ${so}"
     sleep_2
-    install_packages
+    echo "In progress..."
     clear
   elif [ $so == "linux" ]; then
     echo "Your choice: ${so}"
     sleep_2
-    install_packages
-    #install_nvs
+    install_packages_linux
+    install_nvs
     clear
   fi
 }
