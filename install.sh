@@ -32,16 +32,21 @@ function install_nvs {
   . $NVS_HOME/nvs.sh install
 }
 
-function install_docker {
+function install_docker_io {
   wget get.docker.com
   chmod +x index.html
   sh index.html
 }
 
-function intall_docker_compose {
+function install_docker_compose {
   curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
   chmod +x /usr/local/bin/docker-compose
   docker-compose --version
+}
+
+function install_docker {
+  install_docker_io
+  install_docker_compose
 }
 
 # Verify the os and then run the correct function
@@ -56,6 +61,7 @@ function run_instalation {
     sleep_2
     install_packages_linux
     install_nvs
+    install_docker
     clear
   fi
 }
