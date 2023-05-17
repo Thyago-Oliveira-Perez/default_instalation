@@ -32,6 +32,18 @@ function install_nvs {
   . $NVS_HOME/nvs.sh install
 }
 
+function install_docker {
+  wget get.docker.com
+  chmod +x index.html
+  sh index.html
+}
+
+function intall_docker_compose {
+  curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  chmod +x /usr/local/bin/docker-compose
+  docker-compose --version
+}
+
 # Verify the os and then run the correct function
 function run_instalation {
   if [ $so == "windows" ]; then
